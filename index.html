@@ -65,7 +65,21 @@ small{color:#536a7b}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:c
 <div><label for="name">Leietaker / navn</label><input id="name" readonly><label for="phone">Telefon</label><input id="phone" readonly></div>
 <div><label for="length">Båtlengde (meter)</label><input id="length" readonly><label for="dx">Forskyvning X (piksler)</label><input id="dx" type="number" step="1" value="0"><label for="dy">Forskyvning Y (piksler)</label><input id="dy" type="number" step="1" value="0"></div>
 </div><button id="save" style="display:none">Lagre opplysninger</button> <small id="notice">Visning av båtplasser. Importerte justeringer lagres lokalt i nettleseren.</small>
-</section></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script>
+</section></main><script>
+// Flytt administratorinnlogging og administratormeny til rett under havnebildet.
+(() => {
+  const map = document.getElementById('map');
+  const bar = document.getElementById('admin-bar');
+  const menuButton = document.getElementById('admin-menu-toggle');
+  const menu = document.getElementById('admin-menu');
+  if (map && bar && menuButton && menu) {
+    map.insertAdjacentElement('afterend', bar);
+    bar.insertAdjacentElement('afterend', menuButton);
+    menuButton.insertAdjacentElement('afterend', menu);
+  }
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script>
 const SUPABASE_URL='https://ugatjfkauealxcpcqmpy.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_vrzGn9Vlf3kA2kg8AxN80g_7MAw2of-';
 
